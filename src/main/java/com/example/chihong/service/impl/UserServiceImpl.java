@@ -24,35 +24,35 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    public List<User> getlist() {
-        return userMapper.selectList(null);
-
-    }
-
-    public String adduser(@RequestBody User user) {
-        userMapper.insert(user);
-        return null;
-    }
-
-    public ResponseEntity<?> dellete(long id){
-        boolean result = userMapper.deleteById(id) > 0;
-        if(result){
-            return  ResponseEntity.ok("del succeed");
-        } else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User NOT FIUND");
-        }
-    }
-
-    public String updata(User user){
-        int result = userMapper.updateById(user);
-        if(result > 0){
-            return "ok";
-        } else {
-            return "err";
-        }
-    }
+//    @Autowired
+//    private UserMapper userMapper;
+//
+//    public List<User> getlist() {
+//        return userMapper.selectList(null);
+//
+//    }
+//
+//    public String adduser(@RequestBody User user) {
+//        userMapper.insert(user);
+//        return null;
+//    }
+//
+//    public ResponseEntity<?> dellete(long id){
+//        boolean result = userMapper.deleteById(id) > 0;
+//        if(result){
+//            return  ResponseEntity.ok("del succeed");
+//        } else{
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User NOT FIUND");
+//        }
+//    }
+//
+//    public String updata(User user){
+//        int result = userMapper.updateById(user);
+//        if(result > 0){
+//            return "ok";
+//        } else {
+//            return "err";
+//        }
+//    }
 
 }
