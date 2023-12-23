@@ -2,6 +2,9 @@ package com.example.chihong.controller;
 
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.example.chihong.entity.User;
 import com.example.chihong.service.UserService;
@@ -38,6 +41,16 @@ public class UserController {
         return userService.list();
 
     }
+
+    @GetMapping("/getTwo")
+    public List<User> getTwo(){
+        QueryWrapper<User> queryWrapper = Wrappers.query();
+        queryWrapper.orderBy(true,true,"RAND()"); // 在 MySQL 中使用 RAND() 函数进行随机排序
+        queryWrapper.last("LIMIT 2"); // 限制结果集为两条数据
+        return userService.list(queryWrapper);
+    }
+
+
 
     // 添加用户信息
     @PostMapping("/adduser")
